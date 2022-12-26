@@ -2,7 +2,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import { Input, Button } from 'semantic-ui-react';
-import { setSearchAction } from '../Redux/Actions/searchAction';
+import { setSearchAction } from '../../Redux/Actions/searchAction';
 
 export default function NavBar() {
   const dispatch = useDispatch();

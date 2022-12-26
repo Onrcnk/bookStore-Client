@@ -1,0 +1,23 @@
+body{
+
+}
+
+
+
+.description {
+    
+    font-size: 20px;
+}
+
+.image{
+    height: 450px !important;
+}
+
+.row{
+  margin: 100px;
+  display: flex;
+  justify-content: center !important;
+  flex-wrap: wrap;
+  gap: 100px;
+
+}

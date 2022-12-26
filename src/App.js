@@ -1,6 +1,6 @@
 import './App.css';
-import Book from './component/Book';
-import NavBar from './component/NavBar';
+import Book from './component/book/Book';
+import NavBar from './component/navBar/NavBar';
 import { store } from './Redux/store';
 import { Provider } from 'react-redux';
 
