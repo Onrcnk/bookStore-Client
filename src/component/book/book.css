@@ -10,7 +10,11 @@ body{
 }
 
 .image{
-    height: 450px !important;
+    height: 350px !important;
+}
+
+.image>img{
+    height: 350px !important;
 }
 
 .row{

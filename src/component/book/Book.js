@@ -4,7 +4,7 @@ import 'semantic-ui-css/semantic.min.css';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import unknownBook from '../../asset/unknownBook.jpg';
-import cardStyle from '../../component/book/book.css';
+import '../book/book.css';
 
 export default function Book() {
   const [books, setBooks] = useState([]);
@@ -20,7 +20,7 @@ export default function Book() {
   }, [search]);
 
   return (
-    <Grid columns={2} divided>
+    <Grid>
       <Grid.Row>
         {books.map((book, index) => {
           const { id, volumeInfo } = book;
@@ -34,9 +34,7 @@ export default function Book() {
               <Card.Content>
                 <Card.Header>{volumeInfo.title}</Card.Header>
                 <Card.Meta>{id}</Card.Meta>
-                <Card.Description className={cardStyle.txt}>
-                  Daniel is a comedian living in Nashville.
-                </Card.Description>
+                <Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
               </Card.Content>
               <Card.Content extra>
                 <a href='/node_modules#'>
