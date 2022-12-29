@@ -11,7 +11,7 @@ export default function NavBar() {
   const [searchText, setSearchText] = useState('');
 
   const onFormSubmit = () => {
-    dispatch(setSearchAction(searchText));
+    dispatch(setSearchAction(searchText));  
   };
 
   const [activeItem, setActiveItem] = useState('home');

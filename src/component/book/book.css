@@ -10,10 +10,12 @@ body{
 }
 
 .image{
+    
     height: 350px !important;
 }
 
 .image>img{
+   
     height: 350px !important;
 }
 
@@ -25,3 +27,15 @@ body{
   gap: 100px;
 
 }
+
+.new-book-button{
+    font-size: 100px !important;
+    justify-content: center;
+    height: 150px;
+    width: 1300px;;
+}
+
+.description-box{
+    width: 600px;
+}
+
