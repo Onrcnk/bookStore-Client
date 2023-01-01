@@ -1,14 +1,12 @@
 import { Image, Modal, Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import '../book/book.css';
 
 export default function BookDescriptionPopup(props) {
-
-
   return (
-    <Modal onClose={() => "setOpen(false)"} open={props.open}>
+    <Modal onClose={() => props.closePopup} open={props.open}>
       {' '}
       <Modal.Header>{props.volumeInfo.title}</Modal.Header>
       <Modal.Content image>

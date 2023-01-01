@@ -18,6 +18,10 @@ export default function Book() {
 
   const { search } = useSelector(state => state.search);
 
+  function closePopup(){
+    setOpen(false)
+  }
+
   useEffect(() => {
     if (!!search) {
       axios.get(`http://localhost:8080/books?query=${search}`).then(res => {
@@ -29,35 +33,7 @@ export default function Book() {
   return (
     <Grid>
       
-      <Modal onClose={() => setOpen(false)} open={open}>
-      {' '}
-      <Modal.Header>{volumeInfo.title}</Modal.Header>
-      <Modal.Content image>
-        <Image
-          size='medium'
-          src='https://react.semantic-ui.com/images/avatar/large/rachel.png'
-          wrapped
-        />
-        <Modal.Description>
-          <Header></Header>
-          <p>
-            <b>Author(s):</b> {volumeInfo.authors}{' '}
-          </p>
-          <p>
-            <b>Page:</b> {volumeInfo.pageCount}{' '}
-          </p>
-          <p>
-            <b>Publish Date:</b> {volumeInfo.publishedDate}{' '}
-          </p>
-          <p>
-            <b>Categories:</b> {volumeInfo.categories}{' '}
-          </p>
-          <p>
-            <b>Description:</b> {volumeInfo.description}{' '}
-          </p>
-        </Modal.Description>
-      </Modal.Content>
-    </Modal>
+      <BookDescriptionPopup volumeInfo={volumeInfo} open={open} closePopup={closePopup}/>
       <Grid.Row>
         {books.map((book, index) => {
           const { id, volumeInfo } = book;
