@@ -1,13 +1,12 @@
-import { Image, Modal, Header } from 'semantic-ui-react';
+import { Image, Modal, Header, Button, Input } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import unknownBook from '../../asset/unknownBook.jpg';
 import React from 'react';
-
-import '../book/book.css';
+import '../bookDescriptionPopup/bookDescriptionPopup.css';
 
 export default function BookDescriptionPopup(props) {
   return (
-    <Modal onClose={() => props.closePopup()} onOpen={() => props.openPopup()} open={props.open}>
+    <Modal onClose={() => props.closePopup()} open={props.open}>
       {' '}
       <Modal.Header>{props.volumeInfo.title}</Modal.Header>
       <Modal.Content image>
@@ -16,7 +15,7 @@ export default function BookDescriptionPopup(props) {
           src={props.volumeInfo.imageLinks?.smallThumbnail ?? unknownBook}
           wrapped
         />
-        <Modal.Description>
+        <Modal.Description className='popup-description'>
           <Header></Header>
           <p>
             <b>Author(s):</b> {props.volumeInfo.authors}{' '}
@@ -35,6 +34,14 @@ export default function BookDescriptionPopup(props) {
           </p>
         </Modal.Description>
       </Modal.Content>
+      <Modal.Actions>
+        <span>
+          <Input className='count-input' placeholder='Count' />
+          <Button color='blue' onClick={() => props.closePopup()}>
+            Add Store
+          </Button>
+        </span>
+      </Modal.Actions>
     </Modal>
   );
 }

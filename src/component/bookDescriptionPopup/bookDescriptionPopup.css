@@ -1,0 +1,54 @@
+body{
+
+}
+
+.image{
+    
+    height: 350px !important;
+}
+
+.image>img{
+    height: 350px !important;
+    
+}
+
+.ui.image img{
+    max-width: initial !important;
+    width: 230px;
+}
+
+.ui.modal{
+    height: 525px;
+}
+
+.popup-description{
+    overflow-y: auto;
+    width: 800px !important;
+    height: 350px !important;
+}
+
+.ui.modal>.actions{
+    background-color: white;
+    border-top: initial;
+    padding-top: 43px;
+}
+
+.ui.blue.button{
+    height: 50px;
+    width: 800px;
+}
+
+.count-input{
+    width: 50px;
+    padding-right: 40px;
+    height: 50px;
+}
+
+.ui.input>input{
+    border: 1px dotted grey;
+}
+
+
+
+
+

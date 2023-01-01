@@ -18,12 +18,6 @@ export default function Book() {
 
   function closePopup() {
     setOpen(false);
-    console.log('ASD');
-  }
-
-  function openPopup() {
-    
-    console.log('ASD');
   }
 
   useEffect(() => {
@@ -36,15 +30,10 @@ export default function Book() {
 
   return (
     <Grid>
-      <BookDescriptionPopup
-        volumeInfo={volumeInfo}
-        closePopup={closePopup}
-        openPopup={openPopup}
-        open={open}
-      />
+      <BookDescriptionPopup volumeInfo={volumeInfo} closePopup={closePopup} open={open} />
       <Grid.Row>
         {books.map((book, index) => {
-          const { id, volumeInfo } = book;
+          const { volumeInfo } = book;
           return (
             <Card
               onClick={() => {
@@ -60,8 +49,7 @@ export default function Book() {
               />
               <Card.Content>
                 <Card.Header>{volumeInfo.title}</Card.Header>
-                <Card.Meta>{id}</Card.Meta>
-                <Card.Description>Daniel is a comedian living in Nashville.</Card.Description>
+                <Card.Description>Is This Your Favorite Book?</Card.Description>
               </Card.Content>
             </Card>
           );
