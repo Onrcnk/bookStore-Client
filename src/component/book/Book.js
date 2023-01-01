@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { Card, Image, Grid, Modal, Header } from 'semantic-ui-react';
+import { Card, Image, Grid } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import unknownBook from '../../asset/unknownBook.jpg';
 import '../book/book.css';
-import BookDescriptionPopup from '../bookDescriptionPopup/bookDescriptionPopup';
+import BookDescriptionPopup from '../bookDescriptionPopup/BookDescriptionPopup';
 
 export default function Book() {
   const [books, setBooks] = useState([]);
@@ -14,12 +14,16 @@ export default function Book() {
 
   const [volumeInfo, setVolumeInfo] = useState('');
 
-  console.log(volumeInfo);
-
   const { search } = useSelector(state => state.search);
 
-  function closePopup(){
-    setOpen(false)
+  function closePopup() {
+    setOpen(false);
+    console.log('ASD');
+  }
+
+  function openPopup() {
+    
+    console.log('ASD');
   }
 
   useEffect(() => {
@@ -32,8 +36,12 @@ export default function Book() {
 
   return (
     <Grid>
-      
-      <BookDescriptionPopup volumeInfo={volumeInfo} open={open} closePopup={closePopup}/>
+      <BookDescriptionPopup
+        volumeInfo={volumeInfo}
+        closePopup={closePopup}
+        openPopup={openPopup}
+        open={open}
+      />
       <Grid.Row>
         {books.map((book, index) => {
           const { id, volumeInfo } = book;
