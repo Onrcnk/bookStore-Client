@@ -6,14 +6,14 @@ import { useSelector } from 'react-redux';
 import unknownBook from '../../asset/unknownBook.jpg';
 import '../book/book.css';
 import BookDescriptionPopup from '../bookDescriptionPopup/BookDescriptionPopup';
-import BookCreatPopup from '../bookCreatPopup/BookCreatPopup';
+import BookCreatePopup from '../bookCreatePopup/BookCreatePopup';
 
 export default function Book() {
   const [books, setBooks] = useState([]);
 
   const [openBookDescriptipnPopup, setOpenBookDescriptipnPopup] = useState(false);
 
-  const [openBookCreatPopup, setOpenBookCreatPopup] = useState(false);
+  const [openBookCreatePopup, setOpenBookCreatePopup] = useState(false);
 
   const [volumeInfo, setVolumeInfo] = useState('');
 
@@ -23,8 +23,8 @@ export default function Book() {
     setOpenBookDescriptipnPopup(false);
   }
 
-  function closeBookCreatPopup() {
-    setOpenBookCreatPopup(false);
+  function closeBookCreatePopup() {
+    setOpenBookCreatePopup(false);
   }
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function Book() {
         closePopup={closeBookDescriptionPopup}
         open={openBookDescriptipnPopup}
       />
-      <BookCreatPopup closePopup={closeBookCreatPopup} open={openBookCreatPopup} />
+      <BookCreatePopup closePopup={closeBookCreatePopup} open={openBookCreatePopup} />
       <Grid.Row className='new-book-button-row'>
         <Button
           icon
@@ -50,7 +50,7 @@ export default function Book() {
           color='blue'
           className='new-book-button'
           onClick={() => {
-            setOpenBookCreatPopup(true);
+            setOpenBookCreatePopup(true);
             setVolumeInfo(volumeInfo);
           }}
         >

@@ -1,0 +1,39 @@
+body{
+
+}
+
+.new-book-image{
+    width: 300px !important;
+	height: 350px;
+	justify-content: center;
+	display: flex;
+	align-self: center
+}
+
+.ui.modal{
+    margin-top: -200px;
+}
+
+.label{
+    width: 80px !important;
+}
+
+.label-description{
+    width: 80px !important;
+    margin: 10px !important
+}
+
+.label-tex-area{
+    width: 800px !important;
+     height: 150px !important;
+}
+
+.grid-column{
+    width: 300px !important;
+    justify-content: center !important;
+    
+}
+
+.grid-row{
+    gap: 20px !important;
+}
