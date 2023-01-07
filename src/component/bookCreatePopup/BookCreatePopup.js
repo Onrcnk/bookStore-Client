@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form, Image, Grid, TextArea } from 'semantic-ui-react';
+import { Modal, Button, Form, Image, Grid, TextArea, Input } from 'semantic-ui-react';
 import './bookCreatePopup.css';
 
 export default function BookCreatePopup(props) {
@@ -57,16 +57,27 @@ export default function BookCreatePopup(props) {
                 </Form.Field>
               </Grid.Column>
             </Grid.Row>
-            <Grid.Row>
+            <Grid.Row style={{ marginTop: '0px' }}>
               <Form.Field>
-                <label className='label-description'>Description</label>
+                <label className='label-description' style={{ fontSize: '18px' }}>
+                  Description
+                </label>
                 <TextArea className='label-tex-area' id='first-name' label='Name' />
               </Form.Field>
             </Grid.Row>
-            <Grid.Row>
-              <Button type='submit' primary>
-                Submit
-              </Button>
+            <Grid.Row style={{ marginTop: '0px' }}>
+              <Modal.Actions>
+                <span>
+                  <Input className='count-input' placeholder='Count' />
+                  <Button
+                    className='create-card-button'
+                    color='blue'
+                    onClick={() => props.closePopup()}
+                  >
+                    Add Store
+                  </Button>
+                </span>
+              </Modal.Actions>
             </Grid.Row>
           </Grid>
         </Form>

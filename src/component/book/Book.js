@@ -75,7 +75,7 @@ export default function Book() {
                 ui={false}
               />
               <Card.Content className='card-content'>
-                <Card.Header>{volumeInfo.title}</Card.Header>
+                <Card.Header className='grid-header'>{volumeInfo.title}</Card.Header>
               </Card.Content>
             </Card>
           );

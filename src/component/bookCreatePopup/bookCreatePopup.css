@@ -37,3 +37,16 @@ body{
 .grid-row{
     gap: 20px !important;
 }
+
+.create-card-button{
+    height: 50px;
+    width: 650px;
+}
+
+.count-input{
+    font-size: 15px !important;
+    width: 100px;
+    padding-right: 20px;
+    margin-top: 0px !important;
+    height: 50px;
+}

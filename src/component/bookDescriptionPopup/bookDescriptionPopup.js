@@ -37,7 +37,11 @@ export default function BookDescriptionPopup(props) {
       <Modal.Actions>
         <span>
           <Input className='count-input' placeholder='Count' />
-          <Button color='blue' onClick={() => props.closePopup()}>
+          <Button
+            className='description-card-button'
+            color='blue'
+            onClick={() => props.closePopup()}
+          >
             Add Store
           </Button>
         </span>

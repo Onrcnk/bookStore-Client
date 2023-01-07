@@ -33,14 +33,16 @@ body{
     padding-top: 43px;
 }
 
-.ui.blue.button{
-    height: 50px;
-    width: 800px;
+.description-card-button{
+    height: 50px !important;
+    width: 750px !important;
 }
 
 .count-input{
-    width: 50px;
-    padding-right: 40px;
+    font-size: 15px !important;
+    width: 100px;
+    padding-right: 20px;
+    margin-top: 0px !important;
     height: 50px;
 }
 

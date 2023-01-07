@@ -58,4 +58,9 @@ body{
     text-align: center
 }
 
+.grid-header{
+    overflow: hidden;
+    height: 70px;
+}
+
 
