@@ -36,7 +36,7 @@ body{
 .new-book-button{
     
     height: 50px !important;
-    width: 110px !important;
+    width: 140px !important;
 }
 
 .new-book-button-row{
@@ -55,12 +55,15 @@ body{
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
-    text-align: center
+    text-align: center;
+    
 }
 
 .grid-header{
     overflow: hidden;
     height: 70px;
+    align-items: center !important;
+    display: flex;
 }
 
 

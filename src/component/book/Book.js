@@ -25,6 +25,25 @@ export default function Book() {
 
   function closeBookCreatePopup() {
     setOpenBookCreatePopup(false);
+    saveBook();
+  }
+
+  function saveBook() {
+    axios
+      .post(`http://localhost:8080/book`, {
+        title: 'title',
+        categories: 'categories',
+        authors: 'authors',
+        publishedDate: 'publishedDate',
+        description: 'description',
+        pageCount: 'pageCount',
+        language: 'language',
+        smallThumbnail: 'smallThumbnail',
+        price: 'price',
+        currencyCode: 'currencyCode',
+        stockAmount: 'stockAmount'
+      })
+      .then(res => {});
   }
 
   useEffect(() => {

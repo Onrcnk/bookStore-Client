@@ -1,4 +1,4 @@
-import { Image, Modal, Header, Button, Input } from 'semantic-ui-react';
+import { Image, Modal, Button, Input } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import unknownBook from '../../asset/unknownBook.jpg';
 import React from 'react';
@@ -8,7 +8,7 @@ export default function BookDescriptionPopup(props) {
   return (
     <Modal onClose={() => props.closePopup()} open={props.open}>
       {' '}
-      <Modal.Header>{props.volumeInfo.title}</Modal.Header>
+      <Modal.Header style={{ flexWrap: 'wrap' }}>{props.volumeInfo.title}</Modal.Header>
       <Modal.Content image>
         <Image
           size='medium'
@@ -16,7 +16,6 @@ export default function BookDescriptionPopup(props) {
           wrapped
         />
         <Modal.Description className='popup-description'>
-          <Header></Header>
           <p>
             <b>Author(s):</b> {props.volumeInfo.authors}{' '}
           </p>
@@ -34,7 +33,7 @@ export default function BookDescriptionPopup(props) {
           </p>
         </Modal.Description>
       </Modal.Content>
-      <Modal.Actions>
+      <Modal.Actions style={{ flex: '1 !important' }}>
         <span>
           <Input className='count-input' placeholder='Count' />
           <Button

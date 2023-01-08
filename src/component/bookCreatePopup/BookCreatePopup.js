@@ -4,8 +4,8 @@ import './bookCreatePopup.css';
 
 export default function BookCreatePopup(props) {
   const [file, setFile] = useState();
+
   function handleChange(e) {
-    console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
@@ -28,32 +28,32 @@ export default function BookCreatePopup(props) {
               <Grid.Column>
                 <Form.Field inline>
                   <label className='label'>Title</label>
-                  <input placeholder='Title...' />
+                  <input placeholder='...' />
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Author(s)</label>
-                  <input placeholder='Autors(s)...' />
+                  <input placeholder='...' />
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Publish Date</label>
-                  <input placeholder='Description...' />
+                  <input placeholder='...' />
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Page</label>
-                  <input placeholder='Description...' />
+                  <input placeholder='...' />
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Categories</label>
-                  <input placeholder='Description...' />
+                  <input placeholder='...' />
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Language</label>
-                  <input placeholder='Description...' />
+                  <input placeholder='...' />
                 </Form.Field>
 
                 <Form.Field inline>
                   <label className='label'>Price</label>
-                  <input placeholder='Description...' />
+                  <input placeholder='...' />
                 </Form.Field>
               </Grid.Column>
             </Grid.Row>
