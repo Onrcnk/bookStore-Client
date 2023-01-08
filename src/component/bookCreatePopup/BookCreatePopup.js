@@ -9,6 +9,11 @@ export default function BookCreatePopup(props) {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
+  function closeAndClearPopup() {
+    props.closePopup();
+    setFile('https://react.semantic-ui.com/images/wireframe/square-image.png');
+  }
+
   return (
     <Modal onClose={() => props.closePopup()} open={props.open}>
       <Modal.Header>Creat Book</Modal.Header>
@@ -72,7 +77,7 @@ export default function BookCreatePopup(props) {
                   <Button
                     className='create-card-button'
                     color='blue'
-                    onClick={() => props.closePopup()}
+                    onClick={() => closeAndClearPopup()}
                   >
                     Add Store
                   </Button>
