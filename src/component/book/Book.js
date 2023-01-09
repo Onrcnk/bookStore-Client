@@ -32,16 +32,16 @@ export default function Book() {
     axios
       .post(`http://localhost:8080/book`, {
         title: 'title',
-        categories: 'categories',
-        authors: 'authors',
+        categories: [{ categoryName: 'Mystery' }],
+        authors: [{ authorName: 'Sir Conan Doyle' }],
         publishedDate: 'publishedDate',
         description: 'description',
-        pageCount: 'pageCount',
+        pageCount: 1,
         language: 'language',
         smallThumbnail: 'smallThumbnail',
-        price: 'price',
+        price: 1,
         currencyCode: 'currencyCode',
-        stockAmount: 'stockAmount'
+        stockAmount: 1
       })
       .then(res => {});
   }
