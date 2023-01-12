@@ -7,6 +7,7 @@ export default function BookCreatePopup(props) {
 
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
+    props.setBookImage(e.target.files[0].name);
   }
 
   function closeAndClearPopup() {
@@ -15,7 +16,7 @@ export default function BookCreatePopup(props) {
   }
 
   return (
-    <Modal onClose={() => props.closePopup()} open={props.open}>
+    <Modal onClose={() => closeAndClearPopup()} open={props.open}>
       <Modal.Header>Creat Book</Modal.Header>
       <Modal.Content>
         <Form>
@@ -33,7 +34,7 @@ export default function BookCreatePopup(props) {
               <Grid.Column>
                 <Form.Field inline>
                   <label className='label'>Title</label>
-                  <input placeholder='...' />
+                  <input onChange={e => props.setBookTitle(e.target.value)} placeholder='...' />
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Author(s)</label>
@@ -41,11 +42,14 @@ export default function BookCreatePopup(props) {
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Publish Date</label>
-                  <input placeholder='...' />
+                  <input
+                    onChange={e => props.setBookPublishedDate(e.target.value)}
+                    placeholder='...'
+                  />
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Page</label>
-                  <input placeholder='...' />
+                  <input onChange={e => props.setBookPageCount(e.target.value)} placeholder='...' />
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Categories</label>
@@ -53,12 +57,12 @@ export default function BookCreatePopup(props) {
                 </Form.Field>
                 <Form.Field inline>
                   <label className='label'>Language</label>
-                  <input placeholder='...' />
+                  <input onChange={e => props.setBookLanguage(e.target.value)} placeholder='...' />
                 </Form.Field>
 
                 <Form.Field inline>
                   <label className='label'>Price</label>
-                  <input placeholder='...' />
+                  <input onChange={e => props.setBookPrice(e.target.value)} placeholder='...' />
                 </Form.Field>
               </Grid.Column>
             </Grid.Row>
@@ -67,13 +71,22 @@ export default function BookCreatePopup(props) {
                 <label className='label-description' style={{ fontSize: '18px' }}>
                   Description
                 </label>
-                <TextArea className='label-tex-area' id='first-name' label='Name' />
+                <TextArea
+                  onChange={e => props.setBookDescription(e.target.value)}
+                  className='label-tex-area'
+                  id='first-name'
+                  label='Name'
+                />
               </Form.Field>
             </Grid.Row>
             <Grid.Row style={{ marginTop: '0px' }}>
               <Modal.Actions>
                 <span>
-                  <Input className='count-input' placeholder='Count' />
+                  <Input
+                    onChange={e => props.setBookStockAmount(e.target.value)}
+                    className='count-input'
+                    placeholder='Count'
+                  />
                   <Button
                     className='create-card-button'
                     color='blue'

@@ -11,6 +11,8 @@ import BookCreatePopup from '../bookCreatePopup/BookCreatePopup';
 export default function Book() {
   const [books, setBooks] = useState([]);
 
+  const [bookTitle, setBookTitle] = useState('');
+
   const [openBookDescriptipnPopup, setOpenBookDescriptipnPopup] = useState(false);
 
   const [openBookCreatePopup, setOpenBookCreatePopup] = useState(false);
@@ -18,6 +20,15 @@ export default function Book() {
   const [volumeInfo, setVolumeInfo] = useState('');
 
   const { search } = useSelector(state => state.search);
+
+  const [bookPublishedDate, setBookPublishedDate] = useState('');
+  const [bookDescription, setBookDescription] = useState('');
+  const [bookPageCount, setBookPageCount] = useState();
+  const [bookLanguage, setBookLanguage] = useState('');
+  const [bookImage, setBookImage] = useState('');
+  const [bookCurrencyCode, setBookCurrencyCode] = useState('');
+  const [bookPrice, setBookPrice] = useState();
+  const [bookStockAmount, setBookStockAmount] = useState();
 
   function closeBookDescriptionPopup() {
     setOpenBookDescriptipnPopup(false);
@@ -31,17 +42,17 @@ export default function Book() {
   function saveBook() {
     axios
       .post(`http://localhost:8080/book`, {
-        title: 'title',
+        title: bookTitle,
         categories: [{ categoryName: 'Mystery' }],
         authors: [{ authorName: 'Sir Conan Doyle' }],
-        publishedDate: 'publishedDate',
-        description: 'description',
-        pageCount: 1,
-        language: 'language',
-        smallThumbnail: 'smallThumbnail',
-        price: 1,
-        currencyCode: 'currencyCode',
-        stockAmount: 1
+        publishedDate: bookPublishedDate,
+        description: bookDescription,
+        pageCount: bookPageCount,
+        language: bookLanguage,
+        smallThumbnail: bookImage,
+        price: bookPrice,
+        currencyCode: bookCurrencyCode,
+        stockAmount: bookStockAmount
       })
       .then(res => {});
   }
@@ -61,7 +72,19 @@ export default function Book() {
         closePopup={closeBookDescriptionPopup}
         open={openBookDescriptipnPopup}
       />
-      <BookCreatePopup closePopup={closeBookCreatePopup} open={openBookCreatePopup} />
+      <BookCreatePopup
+        closePopup={closeBookCreatePopup}
+        open={openBookCreatePopup}
+        setBookTitle={setBookTitle}
+        setBookPublishedDate={setBookPublishedDate}
+        setBookDescription={setBookDescription}
+        setBookPageCount={setBookPageCount}
+        setBookLanguage={setBookLanguage}
+        setBookImage={setBookImage}
+        setBookCurrencyCode={setBookCurrencyCode}
+        setBookPrice={setBookPrice}
+        setBookStockAmount={setBookStockAmount}
+      />
       <Grid.Row className='new-book-button-row'>
         <Button
           icon
