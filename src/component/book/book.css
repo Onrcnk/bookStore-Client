@@ -17,6 +17,10 @@ body{
     height: 350px !important;
 }
 
+.card.image{
+    width: 30px !important;
+}
+
 .row{
   margin-top: 10px;
   margin-right: 50px;
