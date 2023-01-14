@@ -5,12 +5,16 @@ import React from 'react';
 import '../bookDescriptionPopup/bookDescriptionPopup.css';
 
 export default function BookDescriptionPopup(props) {
+
+  console.log(props.volumeInfo)
+
   return (
     <Modal onClose={() => props.closePopup()} open={props.open}>
       {' '}
       <Modal.Header style={{ flexWrap: 'wrap' }}>{props.volumeInfo.title}</Modal.Header>
       <Modal.Content image>
         <Image
+        className='popup-image'
           size='medium'
           src={props.volumeInfo.imageLinks?.smallThumbnail ?? unknownBook}
           wrapped
@@ -33,17 +37,15 @@ export default function BookDescriptionPopup(props) {
           </p>
         </Modal.Description>
       </Modal.Content>
-      <Modal.Actions style={{ flex: '1 !important' }}>
-        <span>
-          <Input className='count-input' placeholder='Count' />
+      <Modal.Actions className='description-card-button-row'>
           <Button
             className='description-card-button'
             color='blue'
             onClick={() => props.closePopup()}
           >
-            Add Store
+            Select Book
           </Button>
-        </span>
+  
       </Modal.Actions>
     </Modal>
   );

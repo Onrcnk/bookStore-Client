@@ -7,18 +7,41 @@ body{
     font-size: 20px;
 }
 
-.image{
+.card-image{
     
-    height: 350px !important;
+    height: 150px !important;
+    width: 120px !important;
+    margin-right: 30px !important;
+    margin-bottom: 0px !important;
 }
 
-.image>img{
-   
-    height: 350px !important;
+.ui.small.left.floated.image{
+    height: 150px !important;
 }
 
-.card.image{
-    width: 30px !important;
+.card{
+    height: 160px !important;
+    width: 400px !important;
+    margin: 0px !important;
+
+}
+
+.card-header{
+    overflow: hidden;
+    height: 30px;
+    margin-top: 10px !important;
+    align-items: center !important;
+    display: flex;
+    color: black !important;
+    margin-bottom: 10px;
+}
+
+.card-meta{
+    color: black !important;
+    font-size: 15px !important;
+    margin-bottom: 5px !important;
+    overflow: hidden;
+    height: 50px;
 }
 
 .row{
@@ -29,8 +52,7 @@ body{
   display: flex;
   justify-content: center !important;
   flex-wrap: wrap;
-  gap: 100px;
-
+  gap: 20px;
 }
 
 .description-box{

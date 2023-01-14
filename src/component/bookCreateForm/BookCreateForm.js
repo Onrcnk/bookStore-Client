@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form, Image, Grid, TextArea, Input } from 'semantic-ui-react';
-import './bookCreatePopup.css';
+import {Form, Image, Grid, TextArea, Header } from 'semantic-ui-react';
+import './bookCreateForm.css';
 
 export default function BookCreatePopup(props) {
   const [file, setFile] = useState();
@@ -10,17 +10,11 @@ export default function BookCreatePopup(props) {
     props.setBookImage(e.target.files[0].name);
   }
 
-  function closeAndClearPopup() {
-    props.closePopup();
-    setFile('https://react.semantic-ui.com/images/wireframe/square-image.png');
-  }
-
   return (
-    <Modal onClose={() => closeAndClearPopup()} open={props.open}>
-      <Modal.Header>Creat Book</Modal.Header>
-      <Modal.Content>
-        <Form>
+   
+        <Form className='form-position'>
           <Grid columns={2} relaxed='very'>
+          <Header>Add Book Form</Header>
             <Grid.Row className='grid-row'>
               <Grid.Column className='grid-column'>
                 <Image
@@ -80,26 +74,9 @@ export default function BookCreatePopup(props) {
               </Form.Field>
             </Grid.Row>
             <Grid.Row style={{ marginTop: '0px' }}>
-              <Modal.Actions>
-                <span>
-                  <Input
-                    onChange={e => props.setBookStockAmount(e.target.value)}
-                    className='count-input'
-                    placeholder='Count'
-                  />
-                  <Button
-                    className='create-card-button'
-                    color='blue'
-                    onClick={() => closeAndClearPopup()}
-                  >
-                    Add Store
-                  </Button>
-                </span>
-              </Modal.Actions>
             </Grid.Row>
           </Grid>
         </Form>
-      </Modal.Content>
-    </Modal>
+  
   );
 }

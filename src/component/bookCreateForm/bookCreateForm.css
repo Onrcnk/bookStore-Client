@@ -2,9 +2,18 @@ body{
 
 }
 
+.form-position{
+    position: sticky !important;
+    top: 100px !important;
+}
+
+.grid{
+    justify-content: center;
+}
+
 .new-book-image{
     width: 300px !important;
-	height: 350px;
+	height: 350px !important;
 	justify-content: center;
 	display: flex;
 	align-self: center

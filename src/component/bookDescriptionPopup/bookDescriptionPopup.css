@@ -2,9 +2,17 @@ body{
 
 }
 
-.image{
+.popup-description{
+    overflow-y: auto;
+    height: 350px;
+    
+}
+
+.popup-image{
     
     height: 350px !important;
+    width: 250px !important;
+    
 }
 
 .image>img{
@@ -21,16 +29,10 @@ body{
     height: 525px;
 }
 
-.popup-description{
-    overflow-y: auto;
-    width: 800px !important;
-    height: 350px !important;
-}
-
-.ui.modal>.actions{
-    background-color: white;
-    border-top: initial;
-    padding-top: 43px;
+.description-card-button-row{
+    padding-top: 0px;
+    display: flex;
+    justify-content: center !important;
 }
 
 .description-card-button{
