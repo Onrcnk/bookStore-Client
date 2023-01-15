@@ -11,7 +11,15 @@ import BookDescriptionPopup from '../bookDescriptionPopup/BookDescriptionPopup';
 export default function CardExampleGroups() {
   const [books, setBooks] = useState([]);
 
-  const [openBookDescriptipnPopup, setOpenBookDescriptipnPopup] = useState(false);
+  const [bookTitle, setBookTitle] = useState('');
+  const [bookPublishedDate, setBookPublishedDate] = useState('');
+  const [bookDescription, setBookDescription] = useState('');
+  const [bookPageCount, setBookPageCount] = useState();
+  const [bookLanguage, setBookLanguage] = useState('');
+  const [bookImage, setBookImage] = useState('');
+  const [bookCurrencyCode, setBookCurrencyCode] = useState('');
+  const [bookPrice, setBookPrice] = useState();
+  const [bookStockAmount, setBookStockAmount] = useState();
 
   const [volumeInfo, setVolumeInfo] = useState('');
 
@@ -25,8 +33,22 @@ export default function CardExampleGroups() {
     }
   }, [search]);
 
-  function closeBookDescriptionPopup() {
-    setOpenBookDescriptipnPopup(false);
+  function saveBook() {
+    axios
+      .post(`http://localhost:8080/book`, {
+        title: bookTitle,
+        categories: [{ categoryName: 'Mystery' }],
+        authors: [{ authorName: 'Sir Conan Doyle' }],
+        publishedDate: bookPublishedDate,
+        description: bookDescription,
+        pageCount: bookPageCount,
+        language: bookLanguage,
+        smallThumbnail: bookImage,
+        price: bookPrice,
+        currencyCode: bookCurrencyCode,
+        stockAmount: bookStockAmount
+      })
+      .then(res => {});
   }
 
   return (
@@ -38,12 +60,12 @@ export default function CardExampleGroups() {
             {books.map((book, index) => {
               const { volumeInfo } = book;
               return (
-                <Popup style={{marginTop: "100px !important"}}
-                position='right center'
+                <Popup
+                  style={{ marginTop: '100px !important' }}
+                  position='right center'
                   trigger={
                     <Card
                       onClick={() => {
-                        setOpenBookDescriptipnPopup(true);
                         setVolumeInfo(volumeInfo);
                       }}
                       key={index}
@@ -70,8 +92,15 @@ export default function CardExampleGroups() {
                 >
                   <BookDescriptionPopup
                     volumeInfo={volumeInfo}
-                    closePopup={closeBookDescriptionPopup}
-                    open={openBookDescriptipnPopup}
+                    setBookTitle={setBookTitle}
+                    setBookPublishedDate={setBookPublishedDate}
+                    setBookDescription={setBookDescription}
+                    setBookPageCount={setBookPageCount}
+                    setBookLanguage={setBookLanguage}
+                    setBookImage={setBookImage}
+                    setBookCurrencyCode={setBookCurrencyCode}
+                    setBookPrice={setBookPrice}
+                    setBookStockAmount={setBookStockAmount}
                   />
                 </Popup>
               );
@@ -80,7 +109,19 @@ export default function CardExampleGroups() {
         </Grid.Column>
 
         <Grid.Column>
-          <BookCreatePopup volumeInfo={volumeInfo}/>
+          <BookCreatePopup
+            saveBook={saveBook}
+            volumeInfo={volumeInfo}
+            setBookTitle={setBookTitle}
+            setBookPublishedDate={setBookPublishedDate}
+            setBookDescription={setBookDescription}
+            setBookPageCount={setBookPageCount}
+            setBookLanguage={setBookLanguage}
+            setBookImage={setBookImage}
+            setBookCurrencyCode={setBookCurrencyCode}
+            setBookPrice={setBookPrice}
+            setBookStockAmount={setBookStockAmount}
+          />
         </Grid.Column>
       </Grid>
       <Divider vertical></Divider>
