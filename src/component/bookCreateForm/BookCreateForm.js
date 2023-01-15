@@ -43,47 +43,56 @@ export default function BookCreateForm(props) {
             <Form.Field inline>
               <label className='label'>Title</label>
               <input
-                defaultValue={props.volumeInfo.title}
-                onChange={e => props.setBookTitle(e.target.value)}
+                value={props.volumeInfo.title}
+                onChange={e => props.setVolumeInfo({ ...props.volumeInfo, title: e.target.value })}
                 placeholder='...'
               />
             </Form.Field>
             <Form.Field inline>
               <label className='label'>Author(s)</label>
-              <input defaultValue={props.volumeInfo.authors} placeholder='...' />
+              <input value={props.volumeInfo.authors} placeholder='...' />
             </Form.Field>
             <Form.Field inline>
               <label className='label'>Publish Date</label>
               <input
-                defaultValue={props.volumeInfo.publishedDate}
-                onChange={e => props.setBookPublishedDate(e.target.value)}
+                value={props.volumeInfo.publishedDate}
+                onChange={e =>
+                  props.setVolumeInfo({ ...props.volumeInfo, publishedDate: e.target.value })
+                }
                 placeholder='...'
               />
             </Form.Field>
             <Form.Field inline>
               <label className='label'>Page</label>
               <input
-                defaultValue={props.volumeInfo.pageCount}
-                onChange={e => props.setBookPageCount(e.target.value)}
+                value={props.volumeInfo.pageCount}
+                onChange={e =>
+                  props.setVolumeInfo({ ...props.volumeInfo, pageCount: e.target.value })
+                }
                 placeholder='...'
               />
             </Form.Field>
             <Form.Field inline>
               <label className='label'>Categories</label>
-              <input defaultValue={props.volumeInfo.categories} placeholder='...' />
+              <input value={props.volumeInfo.categories} placeholder='...' />
             </Form.Field>
             <Form.Field inline>
               <label className='label'>Language</label>
               <input
-                defaultValue={props.volumeInfo.language}
-                onChange={e => props.setBookLanguage(e.target.value)}
+                value={props.volumeInfo.language}
+                onChange={e =>
+                  props.setVolumeInfo({ ...props.volumeInfo, language: e.target.value })
+                }
                 placeholder='...'
               />
             </Form.Field>
 
             <Form.Field inline>
               <label className='label'>Price</label>
-              <input onChange={e => props.setBookPrice(e.target.value)} placeholder='...' />
+              <input
+                onChange={e => props.setVolumeInfo({ ...props.volumeInfo, price: e.target.value })}
+                placeholder='...'
+              />
             </Form.Field>
           </Grid.Column>
         </Grid.Row>
@@ -93,8 +102,10 @@ export default function BookCreateForm(props) {
               Description
             </label>
             <TextArea
-              defaultValue={props.volumeInfo.description}
-              onChange={e => props.setBookDescription(e.target.value)}
+              value={props.volumeInfo.description}
+              onChange={e =>
+                props.setVolumeInfo({ ...props.volumeInfo, description: e.target.value })
+              }
               className='label-tex-area'
               id='first-name'
               label='Name'

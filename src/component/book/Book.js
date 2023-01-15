@@ -5,23 +5,25 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import '../book/book.css';
 import SearchBar from '../searchBar/SearchBar';
-import BookCreatePopup from '../bookCreateForm/BookCreateForm';
+import BookCreateForm from '../bookCreateForm/BookCreateForm';
 import BookDescriptionPopup from '../bookDescriptionPopup/BookDescriptionPopup';
 
-export default function CardExampleGroups() {
+export default function Book() {
   const [books, setBooks] = useState([]);
 
-  const [bookTitle, setBookTitle] = useState('');
-  const [bookPublishedDate, setBookPublishedDate] = useState('');
-  const [bookDescription, setBookDescription] = useState('');
-  const [bookPageCount, setBookPageCount] = useState();
-  const [bookLanguage, setBookLanguage] = useState('');
-  const [bookImage, setBookImage] = useState('');
-  const [bookCurrencyCode, setBookCurrencyCode] = useState('');
-  const [bookPrice, setBookPrice] = useState();
-  const [bookStockAmount, setBookStockAmount] = useState();
-
-  const [volumeInfo, setVolumeInfo] = useState('');
+  const [volumeInfo, setVolumeInfo] = useState({
+    title: '',
+    categories: [],
+    authors: [],
+    publishedDate: '',
+    description: '',
+    pageCount: '',
+    language: '',
+    smallThumbnail: '',
+    price: 0,
+    currencyCode: '',
+    stockAmount: 0
+  });
 
   const { search } = useSelector(state => state.search);
 
@@ -36,17 +38,7 @@ export default function CardExampleGroups() {
   function saveBook() {
     axios
       .post(`http://localhost:8080/book`, {
-        title: bookTitle,
-        categories: [{ categoryName: 'Mystery' }],
-        authors: [{ authorName: 'Sir Conan Doyle' }],
-        publishedDate: bookPublishedDate,
-        description: bookDescription,
-        pageCount: bookPageCount,
-        language: bookLanguage,
-        smallThumbnail: bookImage,
-        price: bookPrice,
-        currencyCode: bookCurrencyCode,
-        stockAmount: bookStockAmount
+        volumeInfo
       })
       .then(res => {});
   }
@@ -66,7 +58,20 @@ export default function CardExampleGroups() {
                   trigger={
                     <Card
                       onClick={() => {
-                        setVolumeInfo(volumeInfo);
+                        setVolumeInfo({
+                          title: volumeInfo.title,
+                          categories: [],
+                          authors: [],
+                          publishedDate: volumeInfo.publishedDate,
+                          description: volumeInfo.description ? volumeInfo.description : '',
+                          pageCount: volumeInfo.pageCount ? volumeInfo.pageCount : '',
+                          language: volumeInfo.language,
+                          smallThumbnail: volumeInfo.imageLinks,
+                          price: volumeInfo.price,
+                          currencyCode: volumeInfo.currencyCode,
+                          stockAmount: volumeInfo.stockAmount
+                        });
+                        console.log(volumeInfo);
                       }}
                       key={index}
                     >
@@ -90,18 +95,7 @@ export default function CardExampleGroups() {
                     </Card>
                   }
                 >
-                  <BookDescriptionPopup
-                    volumeInfo={volumeInfo}
-                    setBookTitle={setBookTitle}
-                    setBookPublishedDate={setBookPublishedDate}
-                    setBookDescription={setBookDescription}
-                    setBookPageCount={setBookPageCount}
-                    setBookLanguage={setBookLanguage}
-                    setBookImage={setBookImage}
-                    setBookCurrencyCode={setBookCurrencyCode}
-                    setBookPrice={setBookPrice}
-                    setBookStockAmount={setBookStockAmount}
-                  />
+                  <BookDescriptionPopup setVolumeInfo={setVolumeInfo} volumeInfo={volumeInfo} />
                 </Popup>
               );
             })}
@@ -109,18 +103,10 @@ export default function CardExampleGroups() {
         </Grid.Column>
 
         <Grid.Column>
-          <BookCreatePopup
+          <BookCreateForm
             saveBook={saveBook}
             volumeInfo={volumeInfo}
-            setBookTitle={setBookTitle}
-            setBookPublishedDate={setBookPublishedDate}
-            setBookDescription={setBookDescription}
-            setBookPageCount={setBookPageCount}
-            setBookLanguage={setBookLanguage}
-            setBookImage={setBookImage}
-            setBookCurrencyCode={setBookCurrencyCode}
-            setBookPrice={setBookPrice}
-            setBookStockAmount={setBookStockAmount}
+            setVolumeInfo={setVolumeInfo}
           />
         </Grid.Column>
       </Grid>
