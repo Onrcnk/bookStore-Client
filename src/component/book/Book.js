@@ -1,4 +1,4 @@
-import { Segment, Divider, Card, Image, Grid } from 'semantic-ui-react';
+import { Segment, Divider, Card, Image, Grid, Popup } from 'semantic-ui-react';
 import unknownBook from '../../asset/unknownBook.jpg';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
@@ -32,48 +32,55 @@ export default function CardExampleGroups() {
   return (
     <Segment>
       <Grid columns={2} relaxed='very'>
-        <BookDescriptionPopup
-          volumeInfo={volumeInfo}
-          closePopup={closeBookDescriptionPopup}
-          open={openBookDescriptipnPopup}
-        />
         <Grid.Column className='stuck' style={{ margine: '10px' }}>
           <SearchBar />
           <Grid.Row>
             {books.map((book, index) => {
               const { volumeInfo } = book;
               return (
-                <Card
-                  onClick={() => {
-                    setOpenBookDescriptipnPopup(true);
-                    setVolumeInfo(volumeInfo);
-                  }}
-                  key={index}
+                <Popup style={{marginTop: "100px !important"}}
+                position='right center'
+                  trigger={
+                    <Card
+                      onClick={() => {
+                        setOpenBookDescriptipnPopup(true);
+                        setVolumeInfo(volumeInfo);
+                      }}
+                      key={index}
+                    >
+                      <Card.Content style={{ padding: '5px' }}>
+                        <Image
+                          className='card-image'
+                          floated='left'
+                          size='small'
+                          src={volumeInfo.imageLinks?.smallThumbnail ?? unknownBook}
+                        />
+                        <Card.Header className='card-header'>{volumeInfo.title}</Card.Header>
+                        <Card.Meta className='card-meta'>
+                          {' '}
+                          <b>Author:</b> {volumeInfo.authors}
+                        </Card.Meta>
+                        <Card.Meta className='card-meta'>
+                          {' '}
+                          <b>Page:</b> {volumeInfo.pageCount}
+                        </Card.Meta>
+                      </Card.Content>
+                    </Card>
+                  }
                 >
-                  <Card.Content style={{ padding: '5px' }}>
-                    <Image className='card-image'
-                      floated='left'
-                      size='small'
-                      src={volumeInfo.imageLinks?.smallThumbnail ?? unknownBook}
-                    />
-                    <Card.Header className='card-header'>{volumeInfo.title}</Card.Header>
-                    <Card.Meta className='card-meta'>
-                      {' '}
-                      <b>Author:</b> {volumeInfo.authors}
-                    </Card.Meta>
-                    <Card.Meta className='card-meta'>
-                      {' '}
-                      <b>Page:</b> {volumeInfo.pageCount}
-                    </Card.Meta>
-                  </Card.Content>
-                </Card>
+                  <BookDescriptionPopup
+                    volumeInfo={volumeInfo}
+                    closePopup={closeBookDescriptionPopup}
+                    open={openBookDescriptipnPopup}
+                  />
+                </Popup>
               );
             })}
           </Grid.Row>
         </Grid.Column>
 
         <Grid.Column>
-          <BookCreatePopup />
+          <BookCreatePopup volumeInfo={volumeInfo}/>
         </Grid.Column>
       </Grid>
       <Divider vertical></Divider>

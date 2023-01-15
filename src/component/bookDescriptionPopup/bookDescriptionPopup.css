@@ -3,7 +3,7 @@ body{
 }
 
 .popup-description{
-    overflow-y: auto;
+    overflow-y: hidden;
     height: 350px;
     
 }

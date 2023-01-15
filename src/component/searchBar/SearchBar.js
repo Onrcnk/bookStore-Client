@@ -15,11 +15,15 @@ export default function SearchBar() {
   };
 
   return (
+    <div className='searchbar-header'>
+    <h1>Search Book</h1>
     <div className='searchbar-row'>
+      
       <Input className='searchbar-box' onChange={event => setSearchText(event.target.value)} focus placeholder='Search...' />
       <Button icon onClick={onFormSubmit}>
         <Icon name='world' />
       </Button>
+    </div>
     </div>
   );
 }

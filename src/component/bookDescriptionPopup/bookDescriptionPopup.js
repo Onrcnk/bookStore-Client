@@ -1,4 +1,4 @@
-import { Image, Modal, Button, Input } from 'semantic-ui-react';
+import { Image} from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import unknownBook from '../../asset/unknownBook.jpg';
 import React from 'react';
@@ -6,20 +6,19 @@ import '../bookDescriptionPopup/bookDescriptionPopup.css';
 
 export default function BookDescriptionPopup(props) {
 
-  console.log(props.volumeInfo)
+  
 
   return (
-    <Modal onClose={() => props.closePopup()} open={props.open}>
-      {' '}
-      <Modal.Header style={{ flexWrap: 'wrap' }}>{props.volumeInfo.title}</Modal.Header>
-      <Modal.Content image>
+      <div>
+      <h2 style={{ flexWrap: 'wrap' }}>{props.volumeInfo.title}</h2>
+      
         <Image
         className='popup-image'
           size='medium'
           src={props.volumeInfo.imageLinks?.smallThumbnail ?? unknownBook}
           wrapped
         />
-        <Modal.Description className='popup-description'>
+        <div className='popup-description'>
           <p>
             <b>Author(s):</b> {props.volumeInfo.authors}{' '}
           </p>
@@ -35,18 +34,8 @@ export default function BookDescriptionPopup(props) {
           <p>
             <b>Description:</b> {props.volumeInfo.description}{' '}
           </p>
-        </Modal.Description>
-      </Modal.Content>
-      <Modal.Actions className='description-card-button-row'>
-          <Button
-            className='description-card-button'
-            color='blue'
-            onClick={() => props.closePopup()}
-          >
-            Select Book
-          </Button>
-  
-      </Modal.Actions>
-    </Modal>
+        </div>
+      
+      </div>
   );
 }

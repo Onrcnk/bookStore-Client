@@ -5,10 +5,15 @@ body{
 .searchbar-row{
     display: flex;
     justify-content: center !important;
-    margin-top: 30px;
+    margin-top: 70px !important;
     margin-bottom: 30px;
 }
 
 .searchbar-box{
     width: 500px;
+}
+
+.searchbar-header{
+    margin-top: 30px;
+    text-align: center;
 }
