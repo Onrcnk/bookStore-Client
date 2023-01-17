@@ -19,7 +19,7 @@ export default function Book() {
     description: '',
     pageCount: '',
     language: '',
-    smallThumbnail: '',
+    imageLink: '',
     price: 0,
     currencyCode: '',
     stockAmount: 0
@@ -66,7 +66,7 @@ export default function Book() {
                           description: volumeInfo.description ? volumeInfo.description : '',
                           pageCount: volumeInfo.pageCount ? volumeInfo.pageCount : '',
                           language: volumeInfo.language,
-                          smallThumbnail: volumeInfo.imageLinks,
+                          imageLink: volumeInfo.imageLinks,
                           price: volumeInfo.price,
                           currencyCode: volumeInfo.currencyCode,
                           stockAmount: volumeInfo.stockAmount

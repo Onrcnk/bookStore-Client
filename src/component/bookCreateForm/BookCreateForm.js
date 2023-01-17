@@ -8,6 +8,8 @@ export default function BookCreateForm(props) {
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
     props.setBookImage(e.target.files[0].name);
+
+    props.setVolumeInfo({ ...props.volumeInfo, smallThumbnail: e.target.files[0].name });
   }
 
   function setDefaultImage() {
@@ -24,7 +26,7 @@ export default function BookCreateForm(props) {
               className='new-book-image'
               src={
                 file ??
-                props.volumeInfo.imageLinks?.smallThumbnail ??
+                props.volumeInfo.imageLink?.smallThumbnail ??
                 'https://react.semantic-ui.com/images/wireframe/square-image.png'
               }
               size='medium'

@@ -3,7 +3,6 @@ body{
 }
 
 .description {
-    
     font-size: 20px;
 }
 
@@ -28,7 +27,7 @@ body{
 
 .card-header{
     overflow: hidden;
-    height: 30px;
+    height: 50px !important;
     margin-top: 10px !important;
     align-items: center !important;
     display: flex;
