@@ -38,7 +38,15 @@ export default function Book() {
   function saveBook() {
     axios
       .post(`http://localhost:8080/book`, {
-        volumeInfo
+        title: volumeInfo.title,
+        publishedDate: volumeInfo.publishedDate,
+        description: volumeInfo.description,
+        pageCount: volumeInfo.pageCount,
+        language: volumeInfo.pageCount,
+        imageLink: volumeInfo.imageLink,
+        price: volumeInfo.price,
+        currencyCode: volumeInfo.currencyCode,
+        stockAmount: volumeInfo.stockAmount
       })
       .then(res => {});
   }
@@ -60,8 +68,8 @@ export default function Book() {
                       onClick={() => {
                         setVolumeInfo({
                           title: volumeInfo.title,
-                          categories: [],
-                          authors: [],
+                          categories: volumeInfo.categories,
+                          authors: volumeInfo.authors,
                           publishedDate: volumeInfo.publishedDate,
                           description: volumeInfo.description ? volumeInfo.description : '',
                           pageCount: volumeInfo.pageCount ? volumeInfo.pageCount : '',

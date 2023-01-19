@@ -5,6 +5,20 @@ import './bookCreateForm.css';
 export default function BookCreateForm(props) {
   const [file, setFile] = useState();
 
+  const [createBookVolumeInfo, setCreateBookVolumeInfo] = useState({
+    title: '',
+    categories: [],
+    authors: [],
+    publishedDate: '',
+    description: '',
+    pageCount: '',
+    language: '',
+    imageLink: '',
+    price: 0,
+    currencyCode: '',
+    stockAmount: 0
+  });
+
   function handleChange(e) {
     setFile(URL.createObjectURL(e.target.files[0]));
     props.setBookImage(e.target.files[0].name);
@@ -45,14 +59,20 @@ export default function BookCreateForm(props) {
             <Form.Field inline>
               <label className='label'>Title</label>
               <input
-                value={props.volumeInfo.title}
-                onChange={e => props.setVolumeInfo({ ...props.volumeInfo, title: e.target.value })}
+                value={createBookVolumeInfo.title}
+                onChange={e =>
+                  props.setCreateBookVolumeInfo({ ...props.volumeInfo, title: e.target.value })
+                }
                 placeholder='...'
               />
             </Form.Field>
             <Form.Field inline>
               <label className='label'>Author(s)</label>
-              <input value={props.volumeInfo.authors} placeholder='...' />
+              <input
+                value={props.volumeInfo.authors}
+                onChange={e => props.setVolumeInfo({ ...props.volumeInfo, author: e.target.value })}
+                placeholder='...'
+              />
             </Form.Field>
             <Form.Field inline>
               <label className='label'>Publish Date</label>
